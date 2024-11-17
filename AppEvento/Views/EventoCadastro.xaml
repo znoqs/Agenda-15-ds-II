@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppEvento.Views.EventoCadastro"
+             Title="EventoCadastro"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="Yellow">
+    
+    <VerticalStackLayout VerticalOptions="CenterAndExpand">
+        <Label
+                Text="Cadastro de Evento"
+                TextColor="Black"
+                FontSize="Title"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"/>
+
+        <Frame Margin="10">
+
+            <VerticalStackLayout Spacing="10">
+
+                <Entry Placeholder="Insira o nome do evento"
+                       x:Name="entry_evento"/>
+
+                <Frame>
+                    <VerticalStackLayout >
+                        <Label Text="Período do Evento"/>
+                        <HorizontalStackLayout>
+                            <Label Text="Data de início: "/>
+                            <DatePicker x:Name="dtpck_inicio"
+                                        DateSelected="dtpck_inicio_DateSelected"
+                                        Format="dd/MM/yyyy"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout >
+                            <Label Text="Data de Término"/>
+                            <DatePicker x:Name="dtpck_termino"
+                                        Format="dd/MM/yyyy"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame>
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout Spacing="10" HorizontalOptions="CenterAndExpand">
+                            <Label Text="Quantidade de convidados" />
+                            <Label Text="{Binding Value}"
+                                   BindingContext="{x:Reference stp_convidados}"/>
+                            <Stepper x:Name="stp_convidados"
+                                     Minimum="0"
+                                     Increment="1"/>
+                        </HorizontalStackLayout>
+                        <Label Text="Valor por convidado"/>
+                        <Entry x:Name="valorConvidado"  Placeholder="R$10,0" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Entry x:Name="entry_endereco"  Keyboard="Numeric" Placeholder="insira o endereco do evento"/>
+
+                <Button Text="Próximo" Clicked="Button_Clicked"/>
+
+            </VerticalStackLayout>
+
+        </Frame>
+        
+    </VerticalStackLayout>
+</ContentPage>
